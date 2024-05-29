@@ -1,7 +1,6 @@
-import cart from "../assets/cart.png";
-function Header() {
+function ItemsSection() {
   return (
-    <div className="w-[90rem] p-0 m-0 flex items-center h-[6.313rem] bg-[#0F52BA] gap-24">
+    <div className="w-[58.625rem] p-0 m-0 flex items-center h-[37.563rem]">
       <div className="flex gap-1 w-2/4 pl-10 items-end">
         <h1 className="text-white font-semibold text-4xl">MKS</h1>
         <p className="text-white text-xl font-light">Sistemas</p>
@@ -16,4 +15,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default ItemsSection;

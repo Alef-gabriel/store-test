@@ -1,10 +1,7 @@
-import "./App.css";
-import "./index.css";
-
-import Header from "./components/Header";
+import Home from "./home";
 
 function App() {
-  return <Header />;
+  return <Home />;
 }
 
 export default App;
