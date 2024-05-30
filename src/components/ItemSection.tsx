@@ -16,7 +16,7 @@ const ItemSection: React.FC<ItemsProps> = ({
   price,
 }) => {
   return (
-    <div className="flex flex-col gap-1 w-1/4 pb-0 items-center justify-center shadow-lg rounded-lg">
+    <div className="flex flex-col gap-1 min-w-1/4 w-1/4 pb-0 items-center justify-center shadow-lg rounded-lg">
       <img src={imageUrl} alt="item" />
       <div className="flex gap-1 items-center p-2">
         <p className="font-normal text-base">{title}</p>
