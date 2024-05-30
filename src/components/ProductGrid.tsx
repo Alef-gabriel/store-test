@@ -36,18 +36,37 @@ const ProductGrid: React.FC = () => {
   }
 
   return (
-    <div className="w-[58.625rem] max-w-[58.625rem] h-[37.563rem] ">
-      <div className="grid 1/4:grid-cols-1 1/4:grid-cols-2 1/4:grid-cols-3 1/4:grid-cols-4 gap-2">
+    <div className="w-[58.625rem] max-w-[58.625rem] h-[37.563rem] gap-4 flex flex-col items-center">
+      <div className="w-full flex gap-4">
         {data.length > 0 ? (
-          data.map((product) => (
-            <ItemSection
-              key={product.id}
-              title={product.name}
-              content={product.description}
-              imageUrl={product.photo}
-              price={product.price}
-            />
-          ))
+          data
+            .slice(0, 4)
+            .map((product) => (
+              <ItemSection
+                key={product.id}
+                title={product.name}
+                content={product.description}
+                imageUrl={product.photo}
+                price={product.price}
+              />
+            ))
+        ) : (
+          <p>No data available</p>
+        )}
+      </div>
+      <div className="w-full flex gap-4">
+        {data.length > 0 ? (
+          data
+            .slice(0, 4)
+            .map((product) => (
+              <ItemSection
+                key={product.id}
+                title={product.name}
+                content={product.description}
+                imageUrl={product.photo}
+                price={product.price}
+              />
+            ))
         ) : (
           <p>No data available</p>
         )}
