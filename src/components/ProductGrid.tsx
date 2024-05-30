@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ItemSection from "./ItemSection";
 
-interface Product {
+export interface Product {
   id: number;
   name: string;
   brand: string;
@@ -11,7 +11,11 @@ interface Product {
   photo: string;
 }
 
-const ProductGrid: React.FC = () => {
+interface ItemSectionProps {
+  addToCart: React.Dispatch<React.SetStateAction<Product[]>>;
+}
+
+const ProductGrid: React.FC<ItemSectionProps> = ({ addToCart }) => {
   const [data, setData] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -27,13 +31,16 @@ const ProductGrid: React.FC = () => {
         setError(err.message);
       }
     };
-
     fetchData();
   }, []);
 
   if (error) {
     return <div>Error: {error}</div>; // Show error message if fetch fails
   }
+
+  const addItemToCart = (product: Product) => {
+    addToCart((prevItems) => [...prevItems, product]);
+  };
 
   return (
     <div className="w-[58.625rem] max-w-[58.625rem] h-[37.563rem] gap-4 flex flex-col items-center">
@@ -42,13 +49,7 @@ const ProductGrid: React.FC = () => {
           data
             .slice(0, 4)
             .map((product) => (
-              <ItemSection
-                key={product.id}
-                title={product.name}
-                content={product.description}
-                imageUrl={product.photo}
-                price={product.price}
-              />
+              <ItemSection product={product} addItemToCart={addItemToCart} />
             ))
         ) : (
           <p>No data available</p>
@@ -57,15 +58,9 @@ const ProductGrid: React.FC = () => {
       <div className="w-full flex gap-4">
         {data.length > 0 ? (
           data
-            .slice(0, 4)
+            .slice(4, 9)
             .map((product) => (
-              <ItemSection
-                key={product.id}
-                title={product.name}
-                content={product.description}
-                imageUrl={product.photo}
-                price={product.price}
-              />
+              <ItemSection product={product} addItemToCart={addItemToCart} />
             ))
         ) : (
           <p>No data available</p>
