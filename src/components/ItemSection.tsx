@@ -16,11 +16,11 @@ const ItemSection: React.FC<ItemsProps> = ({
   price,
 }) => {
   return (
-    <div className="flex flex-col gap-1 min-w-1/4 w-1/4 pb-0 items-center justify-center shadow-lg rounded-lg">
+    <div className="flex flex-col gap-1 min-w-1/4 w-1/4 pb-0 items-center justify-end shadow-lg rounded-lg bg-white h-full">
       <img src={imageUrl} alt="item" />
-      <div className="flex gap-1 items-center p-2">
+      <div className="flex gap-2 items-center justify-center p-2 w-full">
         <p className="font-normal text-base">{title}</p>
-        <div className="w-[4rem] h-[1.625rem] bg-[#373737] rounded-lg justify-center">
+        <div className="p-1 flex items-center h-[1.625rem] bg-[#373737] rounded-lg">
           <p className="text-white font-bold text-base">R${price}</p>
         </div>
       </div>
