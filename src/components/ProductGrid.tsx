@@ -9,13 +9,15 @@ export interface Product {
   description: string;
   price: number;
   photo: string;
+  quantity: number;
 }
 
 interface ItemSectionProps {
+  cartItems: Product[];
   addToCart: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
-const ProductGrid: React.FC<ItemSectionProps> = ({ addToCart }) => {
+const ProductGrid: React.FC<ItemSectionProps> = ({ addToCart, cartItems }) => {
   const [data, setData] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -39,7 +41,10 @@ const ProductGrid: React.FC<ItemSectionProps> = ({ addToCart }) => {
   }
 
   const addItemToCart = (product: Product) => {
-    addToCart((prevItems) => [...prevItems, product]);
+    const isAlreadyInCart = cartItems.some((item) => item.id === product.id);
+    if (!isAlreadyInCart) {
+      addToCart((prevItems) => [...prevItems, product]);
+    }
   };
 
   return (
