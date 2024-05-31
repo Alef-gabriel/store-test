@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import ProductGrid, { Product } from "../components/ProductGrid";
 import CartModal from "../components/CartModal";
+import Walk from "../components/Walk";
 
 const Home: React.FC = () => {
   const [cartItems, addToCart] = useState<Product[]>([]);
@@ -21,6 +22,7 @@ const Home: React.FC = () => {
       <div className="flex h-[170vh] justify-center p-[7.25rem] w-[90rem] bg-[#00000022]">
         <ProductGrid addToCart={addToCart} cartItems={cartItems} />
       </div>
+      <Walk />
     </div>
   );
 };
