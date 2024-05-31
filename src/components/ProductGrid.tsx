@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import ItemSection from "./ItemSection";
 
 export interface Product {
@@ -29,8 +29,9 @@ const ProductGrid: React.FC<ItemSectionProps> = ({ addToCart, cartItems }) => {
         );
         console.log(response.data); // Inspect the response structure
         setData(response.data.products); // Adjust this line according to the actual structure
-      } catch (err) {
-        setError(err.message);
+      } catch (err: unknown) {
+        const axiosErr = err as AxiosError;
+        setError(axiosErr.message);
       }
     };
     fetchData();
